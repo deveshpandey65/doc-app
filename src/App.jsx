@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, RouterProvider } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DoctorLogin from '../pages/DoctorLogin';
 import DoctorSignup from '../pages/DoctorSignup';
 import DoctorDashboard from '../pages/DoctorDashboard';
 import { ThemeProvider } from '../context/ThemeContext';
-import useDoctorAuthStore from '../store/doctorAuthStore';
 import ClientDashboard from '../pages/ClientDashboard';
 import HomePage from '../pages/HomePage';
 import DoctorProfile from '../components/DoctorProfile';
@@ -20,32 +19,31 @@ import PatientBookingPortal from '../components/PatientBookingPortal';
 import DoctorPaymentPortal from '../components/DoctorPayementPortal';
 import ClientAppointment from '../components/ClientAppointments';
 import Pay from '../components/Pay';
+
 function App() {
-  
   return (
     <ThemeProvider>
-      <Router>
+      <Router basename="/doc-app">
         <div className="app">
           <Routes>
-            <Route path="/" element={<HomePage/>}/>
+            <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<DoctorLogin />} />
             <Route path="/signup" element={<DoctorSignup />} />
-            <Route path="/doctordashboard" element={<DoctorDashboard /> } />
-            <Route path="/clientdashboard" element={<ClientDashboard/>}/>
-            <Route path='/doctorprofile' element={<DoctorProfile/>}/>
-            <Route path='/doctorappointments' element={<DoctorPaymentPortal/>}/>
-            <Route path='/doctordirectory' element={<DoctorDirectory/>}/>
+            <Route path="/doctordashboard" element={<DoctorDashboard />} />
+            <Route path="/clientdashboard" element={<ClientDashboard />} />
+            <Route path="/doctorprofile" element={<DoctorProfile />} />
+            <Route path="/doctorappointments" element={<DoctorPaymentPortal />} />
+            <Route path="/doctordirectory" element={<DoctorDirectory />} />
             <Route path="/chat" element={<ChatPage />} />
             <Route path="/clientprofile" element={<ClientProfile />} />
-            <Route path="/clientappointments" element={<ClientAppointment/>}/>
+            <Route path="/clientappointments" element={<ClientAppointment />} />
             <Route path="/video-call" element={<VideoCallPage />} />
             <Route path="/nearby-clinics" element={<NearbyClinicsMap />} />
             <Route path="/medicines-search" element={<MedicineSearch />} />
             <Route path="/finddoctors" element={<AllDoctorsPage />} />
             <Route path="/doctorschedule" element={<ScheduleManagement />} />
             <Route path="/bookappointment" element={<PatientBookingPortal />} />
-            <Route path="/pay" element={<Pay/>}/>
-            {/* Redirect to home if no route matches */}
+            <Route path="/pay" element={<Pay />} />
           </Routes>
         </div>
       </Router>
